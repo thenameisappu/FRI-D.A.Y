@@ -1,0 +1,12 @@
+{
+    "2025-10-23": {
+        "ApplicationFrameHost.exe": 120,
+        "Code.exe": 385,
+        "explorer.exe": 691,
+        "firefox.exe": 420,
+        "SearchHost.exe": 10,
+        "ShellExperienceHost.exe": 15,
+        "cmd.exe": 90,
+        "python.exe": 10
+    }
+}

@@ -1,0 +1,38 @@
+# --- Core Functionality ---
+opencv-python      # Camera/video processing
+pygame               # UI animations and face display
+pyaudio              # Captures live audio from microphone
+SpeechRecognition    # Converts microphone voice input into text
+pyttsx3==2.91                # Offline text-to-speech engine
+
+numpy==1.26.0                # Supports OpenCV, math calculations
+
+# --- Wake Word ---
+pvporcupine           # Wake word detection engine (e.g., "Friday")
+
+# --- System & Hardware Control ---
+pycaw       # Controls Windows system/app audio volume
+comtypes    # Required by pycaw for Windows COM interfaces
+pywin32                 # Accesses Windows system APIs (shutdown, lock, etc.)
+keyboard           # Detects and simulates keyboard events
+pyautogui            # UI automation: mouse, keyboard, screen
+pygetwindow           # Manages and focuses application windows
+psutil                # Gets system info like CPU usage, battery status
+winsdk        # Windows-specific system features
+
+# --- Application & Web ---
+requests             # Sends HTTP requests (weather, location, etc.)
+AppOpener             # Opens installed apps via voice commands
+spotify              # Controls music via Spotify Web API
+
+# --- UI and Image Processing ---
+Pillow               # Image processing (load, resize assistant face images)
+
+# --- Document Handling ---
+python-docx          # Word documents
+PyPDF2                # PDF files
+openpyxl              # Excel files
+python-pptx          # PowerPoint files
+
+# --- Optional / Future ---
+flask                 # For future web interface or REST API

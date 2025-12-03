@@ -1,0 +1,17 @@
+{
+  "domains": [
+    "*.doubleclick.net",
+    "*.google-analytics.com",
+    "*.googlesyndication.com",
+    "*.adservice.google.com",
+    "*.adsafeprotected.com",
+    "*.adnxs.com"
+  ],
+  "keywords": [
+    "malware",
+    "adware",
+    "spyware",
+    "phishing"
+  ],
+  "regex_patterns": []
+}
