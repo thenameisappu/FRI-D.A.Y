@@ -116,15 +116,6 @@ def stop_animation():
 
 
 def update_text(text):
-    global current_text, subtitle_end_time
+    global current_text
     current_text = text
 
-    # Simple rule-based duration:
-    # - "Listening..." or empty: no expiry (stick on screen until changed)
-    # - everything else: show for ~3 seconds
-    if not text:
-        subtitle_end_time = 0
-    elif text.strip().lower().startswith("listening") or text.strip().lower().startswith("type your command"):
-        subtitle_end_time = 0  # persistent status messages
-    else:
-        subtitle_end_time = time.time() + 3  # normal subtitle duration (~3s)
