@@ -4,12 +4,12 @@ import time
 import pyautogui
 import numpy as np
 from datetime import datetime
-from src.core.voice import *
 
 SAVE_DIR = r"C:\Users\User\Pictures\Screenshots"
 os.makedirs(SAVE_DIR, exist_ok=True)
 
 def take_screenshot():
+    from src.core.voice import speak
     try:
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         filename = f"screenshot_{timestamp}.png"
@@ -21,6 +21,7 @@ def take_screenshot():
         speak(f"Error taking screenshot: {str(e)}")
 
 def record_screen(duration=10):
+    from src.core.voice import speak
     try:
         screen_size = pyautogui.size()
         fourcc = cv2.VideoWriter_fourcc(*"XVID")
@@ -41,4 +42,5 @@ def record_screen(duration=10):
         speak(f"Screen recording saved as {filename}")
     except Exception as e:
         speak(f"Error during screen recording: {str(e)}")
+
 
