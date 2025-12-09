@@ -17,6 +17,8 @@ A Python-based voice assistant that responds to natural language commands for sy
 ```bash
 git clone https://github.com/thenameisappu/friday-voice-assistant/tree/main/Friday!!
 cd friday-voice-assistant
+conda create -n "FRI-D.A.Y" python=3.11
+conda activate "FRI-D.A.Y"
 pip install -r requirements.docx
 ```
 
@@ -34,7 +36,6 @@ Then say wake words like:
 friday/
 ├── core/          # Main modules
 ├── config/        # Settings
-├── tests/         # Unit tests
 └── main.py        # Entry point
 ```
 
