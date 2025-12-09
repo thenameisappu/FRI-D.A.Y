@@ -52,7 +52,7 @@ Then say wake words like:
 ```
 
 ## 📝 Requirements
-See requirements.docx
+See requirements.txt
 
 
 ## 📝 Commands
