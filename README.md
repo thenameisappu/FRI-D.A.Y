@@ -1,6 +1,6 @@
 # FRI-D.A.Y. (Friendly Responsive Intelligent Digital Assistant for You) -- Voice Assistant
 
-![Assistant Demo](https://placehold.co/1200x400/000000/FFFFFF?text=FRI-D.A.Y.%0A(Friendly+Responsive+Intelligent+Digital+Assistant+for+You)
+![Assistant Demo](https://placehold.co/1200x400/000000/FFFFFF?text=FRI-D.A.Y.%0A(Friendly+Responsive+Intelligent+Digital+Assistant+for+You)%0A
 )
 
 
