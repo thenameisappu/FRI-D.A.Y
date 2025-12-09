@@ -40,7 +40,6 @@ Then say wake words like:
 ├── requirements.txt                                    # Python dependencies
 ├── README.md                                           # Project documentation
 ├── commands.txt                                        # List of supported voice commands
-├── wifi_profile.xml                                    # Wi-Fi network profile for auto-connect
 │
 ├──📂 resources/
 │
