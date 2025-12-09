@@ -1,6 +1,7 @@
 # FRI-D.A.Y. (Friendly Responsive Intelligent Digital Assistant for You) -- Voice Assistant
 
-![Assistant Demo](https://placehold.co/1600x500/000000/FFFFFF?text=FRI-D.A.Y.%0A(Friendly+Responsive+Intelligent+Digital%0AAssistant+for+You))
+![Assistant Demo](https://placehold.co/3000x600/000000/FFFFFF?text=FRI-D.A.Y.+(Friendly+Responsive+Intelligent+Digital+Assistant+for+You)
+)
 
 
 A Python-based voice assistant that responds to natural language commands for system control, media playback, file operations, and more.
