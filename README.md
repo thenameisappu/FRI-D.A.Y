@@ -33,10 +33,22 @@ Then say wake words like:
 
 ## 📂 Project Structure
 ```
-FRI-D.A.Y/
-├── core/          # Main modules
-├── config/        # Settings
-└── main.py        # Entry point
+
+📂 FRI-D.A.Y/
+├── main.py                                             # Entry point to run Friday
+├── requirements.txt                                    # Python dependencies
+├── README.md                                           # Project documentation
+├── commands.txt                                        # List of supported voice commands
+├── wifi_profile.xml                                    # Wi-Fi network profile for auto-connect
+│
+├──📂 resources/
+│
+└──📂 src/
+     ├──📂 core/
+     │
+     ├──📂 features/
+     │
+     └──📂 utils/
 ```
 
 ## 📝 Requirements
