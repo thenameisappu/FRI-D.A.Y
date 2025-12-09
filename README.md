@@ -27,9 +27,10 @@ pip install -r requirements.docx
 python main.py
 ```
 Then say wake words like:
-- "Friday, open browser"
-- "Friday, play music"
-- "Friday, system status"
+- "open browser"
+- "play music"
+- "system status"
+- .........
 
 ## 📂 Project Structure
 ```
