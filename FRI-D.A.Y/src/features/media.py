@@ -123,42 +123,62 @@ class MediaPlayer:
 
 def handle_music(command):
     try:
-        music_folder = "D:\Security\Phone\Music"
+        music_folder = r"C:\Users\User\Music"
+
         if not os.path.exists(music_folder):
             speak("Your Music folder was not found.")
             return
 
-        music_files = [file for file in os.listdir(music_folder) if file.lower().endswith('.mp3')]
+        music_files = [
+            file for file in os.listdir(music_folder)
+            if file.lower().endswith(".mp3")
+        ]
 
         if not music_files:
             speak("No music files found.")
             return
 
+        def ensure_mixer():
+            if not pygame.mixer.get_init():
+                pygame.mixer.init()
+
         def play_random():
+            ensure_mixer()
             file_path = os.path.join(music_folder, random.choice(music_files))
             pygame.mixer.music.load(file_path)
             pygame.mixer.music.play()
             speak(f"Playing {os.path.basename(file_path)}")
 
-        if 'play' in command and 'change' not in command:
+        if "play" in command and "change" not in command:
             play_random()
-        elif 'pause' in command:
-            if pygame.mixer.music.get_busy():
+
+        elif "pause" in command:
+            if pygame.mixer.get_init() and pygame.mixer.music.get_busy():
                 pygame.mixer.music.pause()
                 speak("Music paused")
             else:
                 speak("No music is currently playing")
-        elif 'resume' in command:
+
+        elif "resume" in command:
+            ensure_mixer()
             pygame.mixer.music.unpause()
             speak("Music resumed")
-        elif 'stop' in command:
-            pygame.mixer.music.stop()
-            speak("Music stopped")
-        elif 'change' in command or 'next' in command:
-            pygame.mixer.music.stop()
+
+        elif "stop" in command:
+            if pygame.mixer.get_init():
+                pygame.mixer.music.stop()
+                speak("Music stopped")
+
+        elif "change" in command or "next" in command:
+            if pygame.mixer.get_init():
+                pygame.mixer.music.stop()
             play_random()
+
         else:
             speak("Please specify play, pause, resume, stop or change.")
+
     except Exception as e:
-        speak("Sorry, I encountered an error with the music operation")
+        speak("Sorry, I encountered an error with the music operation Sir!")
         print(f"Media error: {e}")
+
+
