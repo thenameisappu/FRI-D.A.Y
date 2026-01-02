@@ -4,7 +4,7 @@ from datetime import datetime
 
 photo_triggers = ["take photo", "click picture", "capture photo", "take a picture", "click photo", "snap photo", "cheese", "say cheese", "smile", "smile please", "let's take a picture", "capture this moment", "photo time", "take my photo"]
 
-PHOTO_DIR = r"C:\Users\User\Pictures\Camera Roll"
+PHOTO_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'resources', 'Camera Roll'))
 os.makedirs(PHOTO_DIR, exist_ok=True)
 
 def take_photo_silent(camera_index=0, speak_func=None):
