@@ -9,7 +9,7 @@ import win32con
 window_name = "Friday"
 animation_running = True
 current_text = ""
-subtitle_end_time = 0  # 0 means: no expiry / always show
+subtitle_end_time = 0 
 image_size = (500, 500)
 
 image_path = r"resources\images\friday_face\friday_face_image.jpg"
@@ -132,4 +132,5 @@ def make_window_always_on_top(window_name):
             0, 0, 0, 0,
             win32con.SWP_NOMOVE | win32con.SWP_NOSIZE
         )
+
 
