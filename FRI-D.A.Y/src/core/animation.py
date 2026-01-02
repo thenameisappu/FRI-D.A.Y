@@ -2,6 +2,9 @@ import cv2
 import threading
 import time
 import os
+import win32gui
+import win32con
+
 
 window_name = "Friday"
 animation_running = True
@@ -79,7 +82,8 @@ def animate_friday():
     global animation_running, current_text, subtitle_end_time
 
     cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
-    cv2.resizeWindow(window_name, 500, 500)
+    make_window_always_on_top(window_name)
+    cv2.resizeWindow(window_name, 400, 400)
     cycle_sequence = list(range(4)) + list(range(2, 0, -1))
 
     while animation_running:
@@ -89,7 +93,6 @@ def animate_friday():
 
             img = friday_images[frame_idx].copy()
 
-            # Only draw subtitle if it's not expired
             now = time.time()
             if current_text and (subtitle_end_time == 0 or now <= subtitle_end_time):
                 img = add_subtitle(img, current_text)
@@ -118,4 +121,15 @@ def stop_animation():
 def update_text(text):
     global current_text
     current_text = text
+
+def make_window_always_on_top(window_name):
+    time.sleep(0.2) 
+    hwnd = win32gui.FindWindow(None, window_name)
+    if hwnd:
+        win32gui.SetWindowPos(
+            hwnd,
+            win32con.HWND_TOPMOST,
+            0, 0, 0, 0,
+            win32con.SWP_NOMOVE | win32con.SWP_NOSIZE
+        )
 
