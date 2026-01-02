@@ -5,15 +5,15 @@ import pyautogui
 import numpy as np
 from datetime import datetime
 
-SAVE_DIR = r"C:\Users\User\Pictures\Screenshots"
-os.makedirs(SAVE_DIR, exist_ok=True)
+SCREENSHOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'resources', 'screenshots'))
+os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
 def take_screenshot():
     from src.core.voice import speak
     try:
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         filename = f"screenshot_{timestamp}.png"
-        full_path = os.path.join(SAVE_DIR, filename)
+        full_path = os.path.join(SCREENSHOT_DIR, filename)
         screenshot = pyautogui.screenshot()
         screenshot.save(full_path)
         speak(f"Screenshot saved as {filename}")
@@ -27,7 +27,7 @@ def record_screen(duration=10):
         fourcc = cv2.VideoWriter_fourcc(*"XVID")
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         filename = f"screen_record_{timestamp}.avi"
-        full_path = os.path.join(SAVE_DIR, filename)
+        full_path = os.path.join(SCREENSHOT_DIR, filename)
 
         out = cv2.VideoWriter(full_path, fourcc, 20.0, screen_size)
         speak("Screen recording started")
