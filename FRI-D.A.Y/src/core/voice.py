@@ -14,7 +14,6 @@ engine.setProperty('rate', 150)
 
 def speak(text, is_exit=False):
     history_utils.log_entry("Friday", text)
-
     text_with_sir = text if is_exit else text + " Sir!"
     animation.update_text(text_with_sir)
     print("Friday: " + text_with_sir)
@@ -24,13 +23,17 @@ def speak(text, is_exit=False):
     engine.runAndWait()
 
     if not is_exit:
-       time.sleep(3)   
-       animation.update_text("Listening...")
+        time.sleep(3)
+        animation.update_text("Listening...")
 
 
 def get_text_command():
     animation.update_text("Type your command...")
-    command = input("Type your command: ")
+    command = input("Type your command: ").strip()
+
+    if command:
+        history_utils.log_entry("User", command)
+
     animation.update_text(f"You commanded: {command}")
     time.sleep(1)
     return command
@@ -42,15 +45,22 @@ def listen_command():
         animation.update_text("Listening...")
         print("Listening...")
         recognizer.adjust_for_ambient_noise(source)
+
         try:
             audio = recognizer.listen(source, timeout=5)
-            command = recognizer.recognize_google(audio).lower()
+            command = recognizer.recognize_google(audio).lower().strip()
+
+            if command:
+                history_utils.log_entry("User", command)
+
             print(f"You said: {command}")
             animation.update_text(f"You said: {command}")
             time.sleep(1)
             return command
+
         except (sr.UnknownValueError, sr.WaitTimeoutError):
             return ""
+
         except sr.RequestError:
             speak("Sorry, my speech service is down.")
             return ""
@@ -61,8 +71,12 @@ def recognize_command():
     with sr.Microphone() as source:
         print("Listening for command...")
         audio = recognizer.listen(source)
+
     try:
-        return recognizer.recognize_google(audio).lower()
+        command = recognizer.recognize_google(audio).lower().strip()
+        if command:
+            history_utils.log_entry("User", command)
+        return command
     except sr.UnknownValueError:
         return ""
 
@@ -90,7 +104,6 @@ def start_voice_loop():
             print("Wake word detected!")
             speak("Yes, how can I help you?")
             command = recognize_command()
-            print(f"You said: {command}")
-            animation.update_text(f"You said: {command}")
 
-
+            if command:
+                animation.update_text(f"You said: {command}")
