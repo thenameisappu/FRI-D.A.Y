@@ -18,8 +18,6 @@ def main():
         else:
             command_text = listen_command()
         
-        history_utils.log_entry("User", command_text)
-        
         if not command.execute_command(command_text):
             break
 
