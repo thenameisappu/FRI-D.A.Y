@@ -140,10 +140,6 @@ def execute_command(command):
                     speak("Sorry, I couldn't calculate that expression")
 
 
-        elif 'note' in command or any(k in command for k in ['create note', 'add to note', 'read note', 'list notes', 'delete note']):
-            handle_note_operations(command)
-
-
         elif 'start timer' in command:
             timer.start()
         elif 'stop timer' in command:
@@ -156,8 +152,10 @@ def execute_command(command):
             stopwatch.reset()
 
 
-        elif 'what is your name' in command:
+        elif 'what are you' in command:
             speak("I am your Laptop assistant. You can call me Friday!")
+        elif 'what is your name' in command:
+            speak("You can call me Friday!")
         elif 'friday' in command:
             speak("I'm here")
         elif 'how are you' in command:
@@ -198,7 +196,7 @@ def execute_command(command):
                   f"Used {memory['used']} GB, "
                   f"Available {memory['available']} GB, "
                   f"Usage percentage {memory['percent']}%")
-        elif 'disk status' in command:
+        elif 'disk status' in command or 'disc status' in command:
             disks = system_monitor.get_disk_info()
             for disk in disks:
                 speak(f"Disk {disk['device']} mounted at {disk['mountpoint']}: "
@@ -300,15 +298,21 @@ def execute_command(command):
                 app_name = command.replace("close", "").strip()
                 close_app(app_name)
 
-        elif "minimize" in command or ("min" in command and "minimize" not in command):
-            keyword = "minimize" if "minimize" in command else "min"
+
+        elif 'note' in command or any(k in command for k in ['create note', 'add to note', 'read note', 'list notes', 'delete note']):
+            handle_note_operations(command)
+
+
+        elif any(k in command for k in ["minimize", "minimise", "min "]):
+            keyword = next(k for k in ["minimize", "minimise", "min"] if k in command)
             app_name = command.replace(keyword, "", 1).strip()
             minimize_window(app_name)
 
-        elif "maximize" in command or ("max" in command and "maximize" not in command):
-            keyword = "maximize" if "maximize" in command else "max"
+        elif any(k in command for k in ["maximize", "maximise", "max "]):
+            keyword = next(k for k in ["maximize", "maximise", "max"] if k in command)
             app_name = command.replace(keyword, "", 1).strip()
             maximize_window(app_name)
+
 
 
         elif 'shutdown' in command:
@@ -457,10 +461,6 @@ def execute_command(command):
             speak("You're welcome!")
 
 
-        elif 'hi' in command or 'hello' in command or 'hey' in command or 'yo' in command or 'sup' in command:
-            speak(random.choice(responses))
-
-
         elif 'chat history' in command or 'show my history' in command:
             speak("Opening your chat history.")
             try:
@@ -469,6 +469,10 @@ def execute_command(command):
                 speak("Sorry, I could not open the history file.")
                 logger.error(f"Failed to open history file: {e}")
         
+
+        elif 'hi' in command or 'hello' in command or 'hey' in command or 'yo' in command or 'sup' in command:
+            speak(random.choice(responses))
+
 
         elif 'search document for' in command or 'find in document' in command:
             su.handle_document_search(speak, listen_command, get_text_command)
@@ -496,7 +500,6 @@ def execute_command(command):
             else:
                 app_list_speech = " No other application windows are open."
 
-            # Format idle time
             idle_minutes = int(idle_time_sec // 60)
             idle_seconds = int(idle_time_sec % 60)
         
