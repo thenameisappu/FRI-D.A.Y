@@ -24,6 +24,7 @@ from src.features.application import open_app,close_app,maximize_window,minimize
 from src.features.whatsapp import send_message_whatsapp_app
 from src.features import camera   
 from src.features.camera import photo_triggers 
+from src.features.keyboard_control import press_keys, handle_typing, search_in_active_app
 from src.utils.screen_utils import take_screenshot, record_screen
 from src.utils import wifi_utils
 from src.utils import bluetooth_utils
@@ -156,7 +157,7 @@ def execute_command(command):
             speak("I am your Laptop assistant. You can call me Friday!")
         elif 'what is your name' in command:
             speak("You can call me Friday!")
-        elif 'friday' in command:
+        elif command.strip().lower() == "friday":
             speak("I'm here")
         elif 'how are you' in command:
             speak("I'm doing great! Appreciate you asking.")
@@ -544,7 +545,15 @@ def execute_command(command):
                     keyword = listen_command() or get_text_command()
                     if keyword and cfu.remove_keyword(keyword): speak(f"Unblocked {keyword}.")
                     else: speak(f"Could not find a filter for {keyword}.")
-
+        
+        
+        elif command.startswith("press"):
+            keys = command.replace("press", "").strip().split()
+            press_keys(keys)
+        elif "type" in command or "write" in command:
+            handle_typing()
+        elif command.startswith("search"):
+            search_in_active_app()
 
         elif 'exit' in command or 'quit' in command or 'goodbye' in command or 'bye' in command or 'stop' in command:
             speak("Goodbye!", is_exit=True)
