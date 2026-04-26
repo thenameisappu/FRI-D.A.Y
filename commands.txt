@@ -1,0 +1,124 @@
+Friday Assistant Voice Commands
+
+✅ Voice Commands
+|-------------------------------------------------------------------------------------------------------------------------------------|
+| Category                | Command                      | Description                                                                |
+|-------------------------|------------------------------|----------------------------------------------------------------------------|
+| File Operations         | search file                  | Searches for a specified file after prompting the user for the file name.  |
+|                         | copy file                    | Copies a specified file after prompting for the file name and destination. |
+|                         | move file                    | Moves a specified file after prompting for the file name and destination.  |
+|                         | delete file                  | Deletes a specified file after confirmation.                               |
+|                         | open file                    | Opens a specified file.                                                    |
+|                         | find file                    | Searches for a specified file.                                             |
+|                         | find my file                 | Searches for a specified file.                                             |
+| Music Control           | play music                   | Plays a random music file from the designated folder.                      |
+|                         | pause music                  | Pauses the currently playing music.                                        |
+|                         | resume music                 | Resumes the paused music.                                                  |
+|                         | stop music                   | Stops the currently playing music.                                         |
+|                         | change music                 | Plays a new random song.                                                   |
+|                         | next song                    | Plays the next song randomly.                                              |
+|                         | play on spotify              | Opens Spotify and starts playback.                                         |
+|                         | pause spotify                | Pauses Spotify playback.                                                   |
+|                         | resume spotify               | Resumes Spotify playback.                                                  |
+|                         | next spotify track           | Skips to the next Spotify track.                                           |
+|                         | previous spotify track       | Goes to the previous Spotify track.                                        |
+| Calculations & Time     | calculate                    | Prompts for a mathematical expression to evaluate.                         |
+|                         | start timer                  | Starts a timer for a user-specified duration.                              |
+|                         | stop timer                   | Stops the running timer.                                                   |
+|                         | start stopwatch              | Starts the stopwatch.                                                      |
+|                         | stop stopwatch               | Stops the stopwatch.                                                       |
+|                         | reset stopwatch              | Resets the stopwatch to zero.                                              |
+| System Info             | system status                | Provides CPU, memory, and disk usage.                                      |
+|                         | cpu status                   | Provides current CPU usage.                                                |
+|                         | memory status                | Shows memory usage details.                                                |
+|                         | disk status                  | Shows disk usage of all partitions.                                        |
+|                         | battery                      | Reports battery level and status.                                          |
+| System Controls         | shutdown system              | Initiates system shutdown.                                                 |
+|                         | restart system               | Initiates system restart.                                                  |
+|                         | lock system                  | Locks the system.                                                          |
+|                         | hibernate system             | Enters hibernate mode.                                                     |
+|                         | put system to sleep          | Puts system to sleep.                                                      |
+| Connectivity            | toggle wifi                  | Turns Wi-Fi on or off.                                                     |
+|                         | connect to wifi              | Prompts to choose and connect to Wi-Fi.                                    |
+|                         | toggle bluetooth             | Turns Bluetooth on or off.                                                 |
+|                         | toggle hotspot               | Turns mobile hotspot on or off.                                            |
+|                         | toggle airplane mode         | Toggles airplane mode.                                                     | 
+|                         | open accessibility settings  | Opens Accessibility settings.                                              |
+|                         | open projection settings     | Opens Projection menu.                                                     |
+|                         | open cast settings           | Opens Cast menu.                                                           |
+| App/File Opening        | open [app_name]              | Opens specified application.                                               |
+|                         | send message on whatsapp     | Sends a WhatsApp message via desktop.                                      |
+| App/Window Management   | close current window         | Closes current window.                                                     |
+|                         | close recent window          | Closes most recent window.                                                 |
+|                         | close [app_name]             | Closes specified app.                                                      |
+| Volume/Brightness       | adjust volume                | Prompts to increase or decrease volume.                                    |
+|                         | adjust brightness            | Prompts to change brightness level.                                        |
+| Screenshots & Recording | take screenshot              | Takes screenshot of current screen.                                        |
+|                         | start screen recording       | Starts screen recording.                                                   |
+|                         | stop screen recording        | Stops screen recording.                                                    |
+|                         | list screen recordings       | (Planned feature – lists recordings).                                      |
+|                         | delete screen recording      | (Planned – deletes screen recording).                                      |
+| Time & Date             | check current time           | States current time.                                                       |
+|                         | check current date           | States current date.                                                       |
+| Notes                   | create note                  | Creates a note with title and content.                                     | 
+|                         | add to note                  | Adds content to an existing note.                                          |
+|                         | read note                    | Reads a note aloud.                                                        |
+|                         | list notes                   | Lists all note titles.                                                     |
+|                         | delete note                  | Deletes a specified note.                                                  |
+| Assistant Control       | friday                       | Activates Friday.                                                          |
+|                         | list available commands      | Shows Friday's features.                                                   |
+|                         | what is your name            | Tells assistant’s name.                                                    |
+|                         | how are you                  | Responds with assistant status.                                            |
+|                         | exit                         | Exits Friday.                                                              |
+|                         | quit                         | Exits Friday.                                                              |
+|-------------------------------------------------------------------------------------------------------------------------------------|
+
+
+
+📁 Project Structure  
+        
+📁Friday!!/
+├── main.py                                             # Entry point to run Friday
+├── requirements.txt                                    # Python dependencies
+├── README.md                                           # Project documentation
+├── commands.txt                                        # List of supported voice commands
+├── wifi_profile.xml                                    # Wi-Fi network profile for auto-connect
+│
+├──📁resources/
+│      └──📁images/
+│           └──📁friday_face/
+│                ├── friday_1.png                       # UI face variant
+│                ├── friday_2.png
+│                ├── friday_3.png
+│                ├── friday_4.png
+│                └── friday_face_image.jpg
+│
+└──📁src/
+     ├──📁core/
+     │   ├── __init__.py
+     │   ├── voice.py                                   # Voice recognition, TTS, wake word
+     │   ├── animation.py                               # Animations or visual/audio feedback
+     │   └── command.py                                 # Core-level command logic
+     │
+     ├──📁features/
+     │   ├── __init__.py
+     │   ├── application.py                             # Launch apps and open URLs
+     │   ├── files.py                                   # File/folder management
+     │   ├── media.py                                   # Music control: local + Spotify
+     │   ├── notes.py                                   # Save voice notes
+     │   ├── system.py                                  # Brightness, volume, system actions
+     │   ├── timer.py                                   # Timer/stopwatch
+     │   ├── whatsapp.py                                # WhatsApp automation          
+     │   └── weather.py                                 # Get weather info via API
+     │
+     └──📁utils/
+          ├── __init__.py
+ 	     ├── wifi_utils.py                             # Scan/connect Wi-Fi (Windows)
+          └── screen_utils.py                           # Screen resolution & display helpers
+
+
+
+
+
+
+
